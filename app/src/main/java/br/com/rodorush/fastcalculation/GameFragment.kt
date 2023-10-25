@@ -7,11 +7,9 @@ import android.os.Message
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Button
 import br.com.rodorush.fastcalculation.Extras.EXTRA_SETTINGS
-import br.com.rodorush.fastcalculation.databinding.ActivityGameBinding
 import br.com.rodorush.fastcalculation.databinding.FragmentGameBinding
 import br.edu.scl.ifsp.sdm.fastcalculation.CalculationGame
 class GameFragment : Fragment() {
@@ -95,9 +93,8 @@ class GameFragment : Fragment() {
             roundDeadlineHandler.sendEmptyMessageDelayed(MSG_ROUND_DEADLINE, settings.roundInterval)
         }else {
             val points = hits * 10f / (totalGameTime / 1000L)
-            //Preciso passar os pontos para a Fragment de Result
 
-            val resultFragment = ResultFragment.newInstance(settings)
+            val resultFragment = ResultFragment.newInstance(points, settings)
             parentFragmentManager.beginTransaction()
                 .replace(R.id.gameFl, resultFragment)
                 .commit()
