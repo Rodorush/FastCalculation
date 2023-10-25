@@ -33,6 +33,12 @@ class ResultFragment : Fragment() {
             fragmentResultBinding.scoreTv.text = it
         }
 
+        val onClickListener = View.OnClickListener {
+            (requireActivity() as? OnPlayGame)?.onPlayGame()
+        }
+
+        fragmentResultBinding.restartBt.setOnClickListener(onClickListener)
+
         return fragmentResultBinding.root
     }
 
