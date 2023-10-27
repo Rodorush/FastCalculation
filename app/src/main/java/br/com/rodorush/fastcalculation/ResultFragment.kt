@@ -26,18 +26,16 @@ class ResultFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         fragmentResultBinding = FragmentResultBinding.inflate(inflater, container, false)
 
         "%.1f".format(points).also {
             fragmentResultBinding.scoreTv.text = it
         }
 
-        val onClickListener = View.OnClickListener {
-            (requireActivity() as? OnPlayGame)?.onPlayGame()
+        fragmentResultBinding.restartBt.setOnClickListener {
+            (context as OnPlayGame).onPlayGame()
         }
-
-        fragmentResultBinding.restartBt.setOnClickListener(onClickListener)
 
         return fragmentResultBinding.root
     }
